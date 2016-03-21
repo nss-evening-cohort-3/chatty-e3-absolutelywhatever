@@ -1,0 +1,20 @@
+.form-group{
+  margin-right: 325px;
+}
+
+nav {
+  margin: 75px;
+}
+
+nav h1{
+  margin-right: 250px;
+  display: inline;
+}
+
+#messages {
+  border: 1px solid black;
+}
+
+.checkboxes {
+  text-align: center;
+}
