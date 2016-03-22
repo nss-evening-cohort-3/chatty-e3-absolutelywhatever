@@ -2,6 +2,9 @@
 var navBar = document.getElementById("navForm")
 var darkTheme = document.getElementById("darkTheme");
 var largeText = document.getElementById("largeText");
+// console.log("font", messages.style.fontSize);
+var message;
+
 var Chatty = (function(chatty) {
   chatty.optionEvents = function(){
     darkTheme.addEventListener("click", function(){
@@ -15,9 +18,15 @@ var Chatty = (function(chatty) {
     });
     largeText.addEventListener("click", function(){
       if (largeText.checked) {
-        console.log("Large text checked");
+        message = document.getElementsByClassName("message");
+        for (let i=0;i<message.length;i++){
+          message[i].setAttribute("style","font-size: 32px;");
+        };
       } else {
-        console.log("Large text unchecked");
+        message = document.getElementsByClassName("message");
+        for (let i=0;i<message.length;i++){
+          message[i].setAttribute("style","font-size: 14px;");
+        };
       };
     });
   }
