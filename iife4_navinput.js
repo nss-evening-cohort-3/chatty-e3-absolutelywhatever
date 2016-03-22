@@ -23,12 +23,14 @@ var Chatty = (function(newChatty){
         }
       }
     textInput.value = "";
+    clearBtn.disabled = false;
     };
   });
 
   clearBtn.addEventListener("click", function() {
     messages.innerHTML = "";
-  })
+    clearBtn.disabled = true;
+  });
 
 
   return newChatty;
