@@ -1,5 +1,5 @@
 "use strict";
-var navBar = document.getElementById("navBar")
+var navBar = document.getElementById("navForm")
 var darkTheme = document.getElementById("darkTheme");
 var largeText = document.getElementById("largeText");
 var Chatty = (function(chatty) {

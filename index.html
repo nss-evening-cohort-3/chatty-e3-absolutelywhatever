@@ -10,20 +10,24 @@
 </head>
 <body>
   <nav>
-    <form class="navbar-form navbar navbar-default navbar-fixed-top" id="navBar" role="search">
+    <form class="navbar-form navbar navbar-default navbar-fixed-top" id="navForm" role="search" onsubmit="return false;">
       <h1>Chatty</h1>
       <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search" size="75">
+        <input type="text" class="form-control" placeholder="Search" size="75" id="textInput">
       </div>
-      <button type="submit" class="btn btn-default">Clear Messages</button>
+      <button type="" class="btn btn-default" id="clearBtn">Clear Messages</button>
     </form>
   </nav>
+
+
   <div class="checkboxes">
     <label for="darkTheme">Dark theme</label>
     <input id="darkTheme" type="checkbox"></input>
     <label for="largeText">Large text</label>
     <input id="largeText" type="checkbox"></input>
   </div>
+
+
 
   <div class="container">
     <div id="messages"></div>
@@ -33,6 +37,7 @@
   <script type="text/javascript" src="iife1_load.js"></script>
   <script type="text/javascript" src="iife2_generate.js"></script>
   <script type="text/javascript" src="iife3_delete.js"></script>
+  <script type="text/javascript" src="iife4_navinput.js"></script>
   <script type="text/javascript" src="options.js"></script>
 </body>
 </html>
