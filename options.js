@@ -3,8 +3,6 @@ var navBar = document.getElementById("navBar")
 var darkTheme = document.getElementById("darkTheme");
 var largeText = document.getElementById("largeText");
 var Chatty = (function(chatty) {
-
-
   chatty.optionEvents = function(){
     darkTheme.addEventListener("click", function(){
       if (darkTheme.checked) {
