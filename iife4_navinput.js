@@ -11,7 +11,7 @@ var Chatty = (function(newChatty){
 
    if(event.keyCode == 13) {
 
-    inputString =`<div>${textInput.value}`;
+    inputString =`<div><p class="message">${textInput.value}</p>`;
     inputString +=`<button class="btn btn-default">Delete</button></div>`;
     messages.innerHTML += inputString;
     textInput.value = "";
