@@ -15,12 +15,14 @@ var Chatty = (function(newChatty){
     inputString +=`<button class="btn btn-default">Delete</button></div>`;
     messages.innerHTML += inputString;
     textInput.value = "";
+    clearBtn.disabled = false;
     };
   });
 
   clearBtn.addEventListener("click", function() {
     messages.innerHTML = "";
-  })
+    clearBtn.disabled = true;
+  });
 
 
   return newChatty;
