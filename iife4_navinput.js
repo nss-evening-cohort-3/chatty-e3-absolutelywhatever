@@ -18,7 +18,13 @@ var Chatty = (function(newChatty){
   textInput.addEventListener("keydown", function(event) {
 
    if(event.keyCode == 13 && textInput.value != "") {
-    stringBuilder();
+    stringBuilder();      
+    if (largeText.checked) {
+      message = document.getElementsByClassName("message");
+      for (let i=0;i<message.length;i++){
+        message[i].setAttribute("style","font-size: 32px;");
+      }
+    };
     textInput.value = "";
     clearBtn.disabled = false;
     } else if(event.keyCode == 13 && textInput.value == ""){
