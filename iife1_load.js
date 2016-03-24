@@ -5,6 +5,9 @@ var Chatty = (function (originalChatty) {
   };
   originalChatty.setMessages = function(message){
     messageArray.push(message);
+    if (messageArray.length > 20) {
+      messageArray.shift();
+    };
   };
   originalChatty.loadMessage= function(){
     var varMessages= new XMLHttpRequest();
