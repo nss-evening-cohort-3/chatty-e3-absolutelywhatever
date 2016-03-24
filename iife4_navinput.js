@@ -9,7 +9,7 @@ var Chatty = (function(newChatty){
   var inputString;
 
   function stringBuilder() {
-    
+
     inputString =`<div><p class="message">${textInput.value}</p>`;
     inputString += `<button class="btn btn-default" id="editBtn">Edit</button>`;
     inputString +=`<button class="btn btn-default" id="delete">Delete</button></div>`;
@@ -19,7 +19,7 @@ var Chatty = (function(newChatty){
   textInput.addEventListener("keydown", function(event) {
 
    if(event.keyCode == 13 && textInput.value != "") {
-    stagedForEdit.pop();
+    stagedForEdit = [];
     stagedForEdit = document.getElementsByClassName("editing");
     if (stagedForEdit.length == 1) {
       stagedForEdit[0].firstChild.innerHTML = textInput.value;
