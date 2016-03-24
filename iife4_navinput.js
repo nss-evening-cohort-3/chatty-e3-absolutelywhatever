@@ -6,14 +6,14 @@ var Chatty = (function(newChatty){
   var clearBtn = document.getElementById('clearBtn');
   var editBtn = document.getElementById('editBtn');
   var stagedForEdit = [];
+  var newMessage = {};
   var inputString;
 
-  function stringBuilder() {
 
-    inputString =`<div><p class="message">${textInput.value}</p>`;
-    inputString += `<button class="btn btn-default" id="editBtn">Edit</button>`;
-    inputString +=`<button class="btn btn-default" id="delete">Delete</button></div>`;
-    messages.innerHTML += inputString;
+  function stringBuilder() {
+    newMessage.content = textInput.value;
+    Chatty.setMessages(newMessage);
+    ;
   }
 
   textInput.addEventListener("keydown", function(event) {

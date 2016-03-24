@@ -1,5 +1,11 @@
 var Chatty = (function (originalChatty) {
   var messageArray=[];
+  originalChatty.getMessages = function(){
+    return messageArray;
+  };
+  originalChatty.setMessages = function(message){
+    messageArray.push(message);
+  };
   originalChatty.loadMessage= function(){
     var varMessages= new XMLHttpRequest();
     varMessages.addEventListener("load", function(){
