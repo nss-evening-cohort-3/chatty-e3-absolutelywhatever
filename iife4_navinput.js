@@ -5,6 +5,7 @@ var Chatty = (function(newChatty){
   var navForm = document.getElementById('navForm');
   var clearBtn = document.getElementById('clearBtn');
   var editBtn = document.getElementById('editBtn');
+  var stagedForEdit = [];
   var inputString;
 
   function stringBuilder() {
@@ -18,15 +19,21 @@ var Chatty = (function(newChatty){
   textInput.addEventListener("keydown", function(event) {
 
    if(event.keyCode == 13 && textInput.value != "") {
-    stringBuilder();      
-    if (largeText.checked) {
-      message = document.getElementsByClassName("message");
-      for (let i=0;i<message.length;i++){
-        message[i].setAttribute("style","font-size: 32px;");
+    stagedForEdit.pop();
+    stagedForEdit = document.getElementsByClassName("editing");
+    if (stagedForEdit.length == 1) {
+      stagedForEdit[0].firstChild.innerHTML = textInput.value;
+    } else {
+      stringBuilder();      
+      if (largeText.checked) {
+        message = document.getElementsByClassName("message");
+        for (let i=0;i<message.length;i++){
+          message[i].setAttribute("style","font-size: 32px;");
+        }
+      };
+      textInput.value = "";
+      clearBtn.disabled = false;
       }
-    };
-    textInput.value = "";
-    clearBtn.disabled = false;
     } else if(event.keyCode == 13 && textInput.value == ""){
       alert("Please enter a message.");
     };
