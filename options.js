@@ -2,7 +2,6 @@
 var navBar = document.getElementById("navForm")
 var darkTheme = document.getElementById("darkTheme");
 var largeText = document.getElementById("largeText");
-// console.log("font", messages.style.fontSize);
 var message;
 
 var Chatty = (function(chatty) {

@@ -1,4 +1,5 @@
 var Chatty = (function (originalChatty) {
+  //loop through function- builds DOM from message array
   originalChatty.loopThrough= function(messageArray){
     var string="";
     for(var i=0; i<messageArray.length; i++){

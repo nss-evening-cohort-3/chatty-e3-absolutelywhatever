@@ -9,36 +9,48 @@ var Chatty = (function(newChatty){
   var newMessage = {};
   var inputString;
 
-
+  //add new messages to message array and send them to the DOM.
   function stringBuilder() {
     newMessage.content = textInput.value;
     Chatty.setMessages(newMessage);
     Chatty.loopThrough(Chatty.getMessages());
   }
 
+  //event listeners for enter key
   textInput.addEventListener("keydown", function(event) {
 
-   if(event.keyCode == 13 && textInput.value != "") {
-    stagedForEdit = [];
-    stagedForEdit = document.getElementsByClassName("editing");
-    if (stagedForEdit.length == 1) {
-      stagedForEdit[0].firstChild.innerHTML = textInput.value;
-    } else {
-      stringBuilder();      
-      if (largeText.checked) {
-        message = document.getElementsByClassName("message");
-        for (let i=0;i<message.length;i++){
-          message[i].setAttribute("style","font-size: 32px;");
+    //if enter is pressed and the text input has text in it...
+    if(event.keyCode == 13 && textInput.value != "") {
+      //clear the staged-for-edit array
+      stagedForEdit = [];
+      //and add the selected message to the array
+      stagedForEdit = document.getElementsByClassName("editing");
+      //if anything is staged for edit...
+      if (stagedForEdit.length == 1) {
+        //set the staged mesage's text to that of the text input.
+        stagedForEdit[0].firstChild.innerHTML = textInput.value;
+      //OR if nothing is staged for edit...
+      } else {
+        //add the textInput text to the DOM.
+        stringBuilder();     
+        //if LargeText is checked, ensure that the new message comes out large 
+        if (largeText.checked) {
+          message = document.getElementsByClassName("message");
+          for (let i=0;i<message.length;i++){
+            message[i].setAttribute("style","font-size: 32px;");
+          }
+        };
+        //clear the text inout and disable the clear button
+        textInput.value = "";
+        clearBtn.disabled = false;
         }
+      //if enter is pressed and there is nothing in the text input, pop up an alert.
+      } else if(event.keyCode == 13 && textInput.value == ""){
+        alert("Please enter a message.");
       };
-      textInput.value = "";
-      clearBtn.disabled = false;
-      }
-    } else if(event.keyCode == 13 && textInput.value == ""){
-      alert("Please enter a message.");
-    };
   });
 
+  //edit button event listener
   messages.addEventListener("click", function() {
     if (event.target.id === "editBtn") {
       event.target.parentNode.classList.add('editing');
@@ -46,6 +58,7 @@ var Chatty = (function(newChatty){
   }
   });
 
+  //clear button event listener
   clearBtn.addEventListener("click", function() {
     messages.innerHTML = "";
     clearBtn.disabled = true;

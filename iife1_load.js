@@ -1,14 +1,22 @@
 var Chatty = (function (originalChatty) {
+
+  //private variable to hold all messages
   var messageArray=[];
+
+  //getter
   originalChatty.getMessages = function(){
     return messageArray;
   };
+
+  //setter, with message limit of 20
   originalChatty.setMessages = function(message){
     messageArray.push(message);
     if (messageArray.length > 20) {
       messageArray.shift();
     };
   };
+
+  // load starter messages from JSON
   originalChatty.loadMessage= function(){
     var varMessages= new XMLHttpRequest();
     varMessages.addEventListener("load", function(){
