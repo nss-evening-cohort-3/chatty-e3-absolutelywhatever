@@ -13,7 +13,7 @@ var Chatty = (function(newChatty){
   function stringBuilder() {
     newMessage.content = textInput.value;
     Chatty.setMessages(newMessage);
-    ;
+    Chatty.loopThrough(Chatty.getMessages());
   }
 
   textInput.addEventListener("keydown", function(event) {
