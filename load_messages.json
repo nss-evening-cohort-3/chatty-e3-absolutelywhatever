@@ -1,8 +1,13 @@
 {"messages":[
-  {"content": "I'm Joe."},
-  {"content": "There's no homework today."},
-  {"content": "What many people it takes to change a light bulb?"},
-  {"content": "Knock, knock."},
-  {"content": "I'm a cinematographer"}
+  {"content": "I'm Joe.", 
+   "user": "Sylvia"},
+  {"content": "There's no homework today.", 
+   "user": "Matt"},
+  {"content": "How many people it takes to change a light bulb?", 
+   "user":"Ryan"},
+  {"content": "Knock, knock.",
+   "user": "Sylvia"},
+  {"content": "I'm a cinematographer",
+   "user": "Matt"}
   ]
 }
