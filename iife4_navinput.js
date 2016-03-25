@@ -12,7 +12,17 @@ var Chatty = (function(newChatty){
   //add new messages to message array and send them to the DOM.
   function stringBuilder() {
     newMessage.content = textInput.value;
+    //set time value
     newMessage.time = new Date();
+
+    //set user value
+    var userArray = document.getElementsByName("user");
+    for(var i=0; i<userArray.length; i++){
+      if(userArray[i].checked){
+        newMessage.user= userArray[i].value;
+      }
+    }
+
     Chatty.setMessages(newMessage);
     Chatty.loopThrough(Chatty.getMessages());
     //break the connection between textInput.value and newMessage.content, so that the next input will not be effected
@@ -31,7 +41,7 @@ var Chatty = (function(newChatty){
       //if anything is staged for edit...
       if (stagedForEdit.length == 1) {
         //set the staged message's text to that of the text input.
-        stagedForEdit[0].firstChild.innerHTML = textInput.value;
+        stagedForEdit[0].childNodes[1].innerHTML = textInput.value;
     
         //save the input value back to messageArray
         //first step: find the index
@@ -46,7 +56,7 @@ var Chatty = (function(newChatty){
         //second step: call the editMessageArray function
         Chatty.editMessageArray(j, textInput.value);
 
-        //clear input box and editing class
+        //clear input box, "editing" class, and colored button
         textInput.value="";
         stagedForEdit[0].classList.remove("editing");
         document.getElementsByClassName("btn-info")[0].classList.remove("btn-info");
@@ -78,7 +88,7 @@ var Chatty = (function(newChatty){
       textInput.focus();
       event.target.classList.add("btn-info");
       event.target.parentNode.classList.add('editing');
-      textInput.value = event.target.parentNode.firstChild.innerHTML;
+      textInput.value = event.target.parentNode.childNodes[1].innerHTML;
   }
   });
 
