@@ -64,12 +64,21 @@ var Chatty = (function(newChatty){
       //OR if nothing is staged for edit...
       } else {
         //add the textInput text to the DOM.
-        stringBuilder();     
-        //if LargeText is checked, ensure that the new message comes out large 
+        stringBuilder();  
+
+        //if LargeText is checked, ensure that the new message, user name and timestamp comes out large 
         if (largeText.checked) {
           message = document.getElementsByClassName("message");
           for (var i=0;i<message.length;i++){
             message[i].setAttribute("style","font-size: 32px;");
+          }
+          user_name = document.getElementsByClassName("user_name");
+          for (var i=0;i<user_name.length;i++){
+            user_name[i].setAttribute("style","font-size: 32px;");
+          }
+          timestamp = document.getElementsByClassName("timestamp");
+          for (var i=0;i<timestamp.length;i++){
+            timestamp[i].setAttribute("style","font-size: 30px;");
           }
         };
         //clear the text input and disable the clear button
