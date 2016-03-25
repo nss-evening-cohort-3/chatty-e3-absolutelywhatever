@@ -16,6 +16,10 @@ var Chatty = (function (originalChatty) {
     };
   };
 
+  originalChatty.editMessageArray= function(i, message){
+    messageArray[i].content= message;
+  };
+
   // load starter messages from JSON
   originalChatty.loadMessage= function(){
     var varMessages= new XMLHttpRequest();
@@ -35,7 +39,10 @@ var Chatty = (function (originalChatty) {
     messageArray=[];
   }
 
+
   return originalChatty;
 })(Chatty||{});
 
 Chatty.loadMessage();
+
+
