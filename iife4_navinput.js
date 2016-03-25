@@ -12,6 +12,7 @@ var Chatty = (function(newChatty){
   //add new messages to message array and send them to the DOM.
   function stringBuilder() {
     newMessage.content = textInput.value;
+    newMessage.time = new Date();
     Chatty.setMessages(newMessage);
     Chatty.loopThrough(Chatty.getMessages());
     //break the connection between textInput.value and newMessage.content, so that the next input will not be effected
