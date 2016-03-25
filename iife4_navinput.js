@@ -14,6 +14,8 @@ var Chatty = (function(newChatty){
     newMessage.content = textInput.value;
     Chatty.setMessages(newMessage);
     Chatty.loopThrough(Chatty.getMessages());
+    //break the connection between textInput.value and newMessage.content, so that the next input will not be effected
+    newMessage={};
   }
 
   //event listeners for enter key
@@ -22,12 +24,12 @@ var Chatty = (function(newChatty){
     //if enter is pressed and the text input has text in it...
     if(event.keyCode == 13 && textInput.value != "") {
       //clear the staged-for-edit array
-      stagedForEdit = [];
+      var stagedForEdit = [];
       //and add the selected message to the array
       stagedForEdit = document.getElementsByClassName("editing");
       //if anything is staged for edit...
       if (stagedForEdit.length == 1) {
-        //set the staged mesage's text to that of the text input.
+        //set the staged message's text to that of the text input.
         stagedForEdit[0].firstChild.innerHTML = textInput.value;
       //OR if nothing is staged for edit...
       } else {
@@ -36,11 +38,11 @@ var Chatty = (function(newChatty){
         //if LargeText is checked, ensure that the new message comes out large 
         if (largeText.checked) {
           message = document.getElementsByClassName("message");
-          for (let i=0;i<message.length;i++){
+          for (var i=0;i<message.length;i++){
             message[i].setAttribute("style","font-size: 32px;");
           }
         };
-        //clear the text inout and disable the clear button
+        //clear the text input and disable the clear button
         textInput.value = "";
         clearBtn.disabled = false;
         }
@@ -61,6 +63,7 @@ var Chatty = (function(newChatty){
   //clear button event listener
   clearBtn.addEventListener("click", function() {
     messages.innerHTML = "";
+    Chatty.clearMessageArray();
     clearBtn.disabled = true;
   });
 

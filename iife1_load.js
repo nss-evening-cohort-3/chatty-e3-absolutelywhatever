@@ -3,7 +3,7 @@ var Chatty = (function (originalChatty) {
   //private variable to hold all messages
   var messageArray=[];
 
-  //getter
+  //getter (this is useless)
   originalChatty.getMessages = function(){
     return messageArray;
   };
@@ -29,6 +29,12 @@ var Chatty = (function (originalChatty) {
     varMessages.open("GET", "load_messages.json");
     varMessages.send();
   }
+
+  //used for clicking "Clear Message" button
+  originalChatty.clearMessageArray=function(){
+    messageArray=[];
+  }
+
   return originalChatty;
 })(Chatty||{});
 
