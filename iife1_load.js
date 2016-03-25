@@ -25,6 +25,11 @@ var Chatty = (function (originalChatty) {
     var varMessages= new XMLHttpRequest();
     varMessages.addEventListener("load", function(){
       messageArray= JSON.parse(this.responseText).messages;
+      
+      //set time property
+      for(var i=0; i<messageArray.length;i++){
+      messageArray[i].time= new Date();
+      }
       //Loop Through Function
       Chatty.loopThrough(messageArray);
       //Delete Button Function

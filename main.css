@@ -14,6 +14,7 @@ nav h1{
 #messages {
   border: 1px solid black;
   margin-top: 30px;
+  padding: 10px;
 }
 
 .form-group{
@@ -25,3 +26,9 @@ div.checkboxes {
   padding-top: 20px;
   position: relative;
 }
+
+.timestamp{
+  color:grey;
+  font-size: 10px;
+}
+
