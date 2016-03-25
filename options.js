@@ -5,13 +5,16 @@ var largeText = document.getElementById("largeText");
 var message;
 
 var Chatty = (function(chatty) {
+
   chatty.optionEvents = function(){
     darkTheme.addEventListener("click", function(){
       if (darkTheme.checked) {
         document.body.style.backgroundColor = "darkgray";
+        document.body.style.color="white";
         navBar.classList.toggle("navbar-inverse");
       } else {
         document.body.style.backgroundColor = "white";
+        document.body.style.color="black";
         navBar.classList.toggle("navbar-inverse");
       };
     });
