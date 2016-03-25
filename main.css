@@ -13,8 +13,15 @@ nav h1{
 
 #messages {
   border: 1px solid black;
+  margin-top: 30px;
 }
 
-.checkboxes {
+.form-group{
+  margin-right: 50px;
+}
+
+div.checkboxes {
   text-align: center;
+  padding-top: 20px;
+  position: relative;
 }
