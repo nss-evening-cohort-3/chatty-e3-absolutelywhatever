@@ -20,6 +20,8 @@ var Chatty = (function(newChatty){
     for(var i=0; i<userArray.length; i++){
       if(userArray[i].checked){
         newMessage.user= userArray[i].value;
+      } else {
+        newMessage.user= "Matt";
       }
     }
 
