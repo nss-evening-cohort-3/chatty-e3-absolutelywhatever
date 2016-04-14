@@ -1,3 +1,4 @@
+// $(document).ready(function(){
 var Chatty = (function (originalChatty) {
 
   //private variable to hold all messages
@@ -22,22 +23,24 @@ var Chatty = (function (originalChatty) {
 
   // load starter messages from JSON
   originalChatty.loadMessage= function(){
-    var varMessages= new XMLHttpRequest();
-    varMessages.addEventListener("load", function(){
-      messageArray= JSON.parse(this.responseText).messages;
-      
-      //set time property
-      for(var i=0; i<messageArray.length;i++){
-      messageArray[i].time= new Date();
-      }
-      //Loop Through Function
-      Chatty.loopThrough(messageArray);
-      //Delete Button Function
-      document.getElementById("messages").addEventListener("click", Chatty.deleteButton);
+    $.ajax({
+      url: "load_messages.json"
+    }).done(function(data){
+      //set time
+      Chatty.setTime(data.messages);
+      //loop through
+      Chatty.loopThrough(data.messages);
+      //delete function
+      $("#messages").click(Chatty.deleteButton);
     });
-    varMessages.open("GET", "load_messages.json");
-    varMessages.send();
-  }
+  };
+  
+  //setTime function
+  originalChatty.setTime = function(data){
+    $(data).each(function(i,element){
+      element.time = new Date();
+    });
+  };
 
   //used for clicking "Clear Message" button
   originalChatty.clearMessageArray=function(){
@@ -50,4 +53,4 @@ var Chatty = (function (originalChatty) {
 
 Chatty.loadMessage();
 
-
+// });

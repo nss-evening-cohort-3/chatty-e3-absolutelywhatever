@@ -1,31 +1,31 @@
 var Chatty = (function (originalChatty) {
   //load user radio 
   originalChatty.userButton= function(){
+
     // User object
     var users = {
     names: ["Xavier", "Joanna", "Mackenzie", "Gunter", "Iveta", "Sven"]
     };
 
-    var string="<span>User Selection:</span>";
-    for(var i=0; i<users.names.length; i++){
-      string+= "<div class='myRadioBtn'><input type='radio' name='user' id= user_"+i+" value="+users.names[i]+">";
-      string+="<label>"+users.names[i]+"</label></div>";
-    }
-    document.getElementById("users").innerHTML= string;
-  }
+    //loop through users
+    $(users.names).each(function(i,element){
+      $("#users").append("<div class='myRadioBtn'><input type='radio' name='user' id= user_"+i+" value="+element+">");
+      $("#users").append("<label>"+element+"</label></div>");
+    })
+  };
 
-  //loop through function- builds DOM from message array
-  originalChatty.loopThrough= function(messageArray){
-    var string="";
-    for(var i=0; i<messageArray.length; i++){
-      string+="<div><span class='user_name'><b>"+messageArray[i].user+":</b> </span>";
-      string+= `<p class="message">${messageArray[i].content}</p>`;
-      string+=`<p class="timestamp"><i>${messageArray[i].time}</i></p>`;
-      string+= `<button class="btn btn-default" id="editBtn">Edit</button>`;
-      string+=`<button class="btn btn-default" id="delete">Delete</button></div><br>`;
-    }
-    document.getElementById("messages").innerHTML = string;
-  }
+  //loop through messages function - build DOM
+  originalChatty.loopThrough= function(data){
+    $(data).each(function(i,element){
+      $("#messages").append("<div><span class='user_name'><b>"+element.user+":</b></span>");
+      $("#messages").append('<p class="message">'+ element.content+"</p>");
+      $("#messages").append('<p class="timestamp"><i>'+element.time+"</i></p>");
+      $("#messages").append('<button class="btn btn-default" id="editBtn">Edit</button>');
+      $("#messages").append('<button class="btn btn-default" id="delete">Delete</button></div><br><br>');
+    });
+  };
+    
+  
   return originalChatty;
 })(Chatty||{});
 
