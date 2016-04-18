@@ -9,19 +9,20 @@ var Chatty = (function (originalChatty) {
 
     //loop through users
     $(users.names).each(function(i,element){
-      $("#users").append("<div class='myRadioBtn'><input type='radio' name='user' id= user_"+i+" value="+element+">");
-      $("#users").append("<label>"+element+"</label></div>");
+      $("#users").append("<div class='myRadioBtn'><input type='radio' name='user' id= user_"+i+" value="+element+"><label>"+element+"</label></div>");
     })
   };
 
   //loop through messages function - build DOM
   originalChatty.loopThrough= function(data){
     $(data).each(function(i,element){
-      $("#messages").append("<div><span class='user_name'><b>"+element.user+":</b></span>");
-      $("#messages").append('<p class="message">'+ element.content+"</p>");
-      $("#messages").append('<p class="timestamp"><i>'+element.time+"</i></p>");
-      $("#messages").append('<button class="btn btn-default" id="editBtn">Edit</button>');
-      $("#messages").append('<button class="btn btn-default" id="delete">Delete</button></div><br><br>');
+      $("#messages").append("<div id= '"+i+"'></div>");
+      $("#"+i).append("<span class='user_name'><b>"+element.user+":</b></span>");
+      $("#"+i).append('<p class="message">'+ element.content+"</p>");
+      $("#"+i).append('<p class="timestamp"><i>'+element.time+"</i></p>");
+      $("#"+i).append('<button class="btn btn-default" id="editBtn">Edit</button>');
+      $("#"+i).append('<button class="btn btn-default" id="delete">Delete</button>');
+      $("#"+i).append("<br><br>");
     });
   };
     

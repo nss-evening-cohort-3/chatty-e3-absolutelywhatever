@@ -1,10 +1,10 @@
 
 var Chatty = (function(newChatty){
-  var textInput = document.getElementById('textInput');
-  var messages = document.getElementById('messages');
-  var navForm = document.getElementById('navForm');
-  var clearBtn = document.getElementById('clearBtn');
-  var editBtn = document.getElementById('editBtn');
+  var textInput = $('#textInput');
+  var messages = $('#messages');
+  var navForm = $('#navForm');
+  var clearBtn = $('#clearBtn');
+  var editBtn = $('#editBtn');
   var stagedForEdit = [];
   var newMessage = {};
   var inputString;
@@ -32,7 +32,7 @@ var Chatty = (function(newChatty){
   }
 
   //event listeners for enter key
-  textInput.addEventListener("keydown", function(event) {
+  textInput.keydown(function(event) {
 
     //if enter is pressed and the text input has text in it...
     if(event.keyCode == 13 && textInput.value != "") {
@@ -94,7 +94,7 @@ var Chatty = (function(newChatty){
   });
 
   //edit button event listener
-  messages.addEventListener("click", function() {
+  messages.click(function() {
     if (event.target.id === "editBtn") {
       textInput.focus();
       event.target.classList.add("btn-info");
@@ -105,8 +105,8 @@ var Chatty = (function(newChatty){
 
 
   //clear button event listener
-  clearBtn.addEventListener("click", function() {
-    messages.innerHTML = "";
+  clearBtn.click(function() {
+    $(messages).html("");
     Chatty.clearMessageArray();
     clearBtn.disabled = true;
   });
